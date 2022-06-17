@@ -1,7 +1,37 @@
-     1                                  code_start:
-     2 00000000 B80000                      mov ax,0
-     3 00000003 01C1                        add cx,ax 
-     4                                      
-     5 00000005 EBFE                    jmp $
-     6 00000007 55                      db 0x55
-     7 00000008 AA                      db 0xaa
+     1                                  ;cs:ip === 0:0x7c00
+     2                                  section mbr vstart=0x7c00
+     3 00000000 8CC8                        mov ax,cs
+     4 00000002 8ED8                        mov ds,ax
+     5 00000004 8EC0                        mov es,ax
+     6 00000006 8ED0                        mov ss,ax
+     7 00000008 8EE0                        mov fs,ax
+     8 0000000A BC007C                      mov sp,0x7c00
+     9                                  
+    10 0000000D B80006                      mov ax,0x600
+    11 00000010 BB0007                      mov bx,0x700
+    12 00000013 B90000                      mov cx,0
+    13 00000016 BA4F18                      mov dx,0x184f
+    14                                  
+    15 00000019 CD10                        int 0x10
+    16 0000001B B403                        mov ah,3
+    17 0000001D B700                        mov bh,0
+    18 0000001F CD10                        int 0x10
+    19                                  
+    20 00000021 B8[3300]                    mov ax,message
+    21 00000024 89C5                        mov bp,ax
+    22                                  
+    23 00000026 B90500                      mov cx,5
+    24 00000029 B80113                      mov ax,0x1301
+    25                                  
+    26 0000002C BB0200                      mov bx,0x2
+    27                                  
+    28 0000002F CD10                        int 0x10
+    29                                  
+    30 00000031 EBFE                    jmp $
+    31                                  
+    32 00000033 4C6565204F53            message db 'Lee OS'
+    33                                  
+    34 00000039 00<rep 1C5h>            times 510-($-$$) db 0
+    35                                  
+    36 000001FE 55                      db 0x55
+    37 000001FF AA                      db 0xaa
