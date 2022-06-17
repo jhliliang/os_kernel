@@ -1,0 +1,7 @@
+     1                                  code_start:
+     2 00000000 B80000                      mov ax,0
+     3 00000003 01C1                        add cx,ax 
+     4                                      
+     5 00000005 EBFE                    jmp $
+     6 00000007 55                      db 0x55
+     7 00000008 AA                      db 0xaa
