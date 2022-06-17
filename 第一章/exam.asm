@@ -1,3 +1,3 @@
-mov eax,100
-mov ecx,200
-add eax,ecx
+mov ax,0x100
+mov dx,0x200
+add ax,dx
