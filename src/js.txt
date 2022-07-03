@@ -1,0 +1,3 @@
+ata0-master: type=disk, path="master.img", mode=flat
+
+dd if=boot.bin of=master.img bs=512 count=1 conv=notrunc

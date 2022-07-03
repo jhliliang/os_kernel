@@ -1,0 +1,3 @@
+mov ax,0x100
+mov dx,0x200
+add ax,dx

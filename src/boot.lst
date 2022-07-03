@@ -1,0 +1,23 @@
+     1                                  ;
+     2                                  section mbr vstart=0x7c00
+     3                                  ;清屏
+     4 00000000 B80300                  mov ax,3
+     5 00000003 CD10                    int 0x10
+     6                                  ;初始化
+     7 00000005 B80000                  mov ax,0
+     8 00000008 8ED8                    mov ds,ax
+     9 0000000A 8EC0                    mov es,ax
+    10 0000000C 8ED0                    mov ss,ax
+    11 0000000E 8EE0                    mov fs,ax
+    12 00000010 BC007C                  mov sp,0x7c00
+    13                                  
+    14                                  
+    15 00000013 B800B8                  mov ax,0xb800
+    16 00000016 8ED8                    mov ds,ax
+    17 00000018 C60600004C              mov byte [0],'L'
+    18                                  
+    19                                  
+    20 0000001D 00<rep 1E1h>            times 510-($-$$) db 0
+    21                                  
+    22 000001FE 55                      db 0x55
+    23 000001FF AA                      db 0xaa
