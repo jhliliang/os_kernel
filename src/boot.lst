@@ -13,11 +13,31 @@
     13                                  
     14                                  
     15 00000013 B800B8                  mov ax,0xb800
-    16 00000016 8ED8                    mov ds,ax
-    17 00000018 C60600004C              mov byte [0],'L'
+    16 00000016 8EC0                    mov es,ax
+    17 00000018 BF0000                  mov di,0
     18                                  
-    19                                  
-    20 0000001D 00<rep 1E1h>            times 510-($-$$) db 0
-    21                                  
-    22 000001FE 55                      db 0x55
-    23 000001FF AA                      db 0xaa
+    19 0000001B B8007C                  mov ax,0x7c00
+    20 0000001E 8ED8                    mov ds,ax
+    21 00000020 BE[3100]                mov si,message;
+    22                                  
+    23                                  reds:
+    24 00000023 8B04                        mov ax,[si]
+    25 00000025 268905                      mov [es:di],ax
+    26 00000028 46                          inc si
+    27 00000029 47                          inc di
+    28 0000002A 47                          inc di
+    29 0000002B 8A04                        mov al, [si]
+    30 0000002D 3C00                        cmp al,0;比较是不是0
+    31                                  
+    32 0000002F 75F2                        jnz reds
+    33                                  
+    34                                  
+    35                                  
+    36                                  message:
+    37 00000031 4C65654F5300                 db "LeeOS",0
+    38                                  
+    39                                  
+    40 00000037 00<rep 1C7h>            times 510-($-$$) db 0
+    41                                  
+    42 000001FE 55                      db 0x55
+    43 000001FF AA                      db 0xaa

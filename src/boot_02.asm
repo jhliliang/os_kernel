@@ -13,8 +13,25 @@ mov sp,0x7c00
 
 
 mov ax,0xb800
+mov es,ax
+mov di,0
+
+mov ax,0x7c00
 mov ds,ax
-mov byte [0],'L'
+mov si,message;
+
+reds:
+    mov ax,[si]
+    mov [es:di],ax
+    inc si
+    add di,2
+
+    mov al, [si]
+    cmp al,0;比较是不是0
+    jnz reds
+    
+message:
+     db "LeeOS",0
 
 
 times 510-($-$$) db 0
