@@ -9,20 +9,17 @@ mov ds,ax
 mov es,ax
 mov ss,ax
 mov fs,ax
-mov sp,0x7c00
+mov sp,0x7c0
 
 
 mov ax,0xb800
 mov es,ax
 mov di,0
-
-mov ax,0x7c00
-mov ds,ax
 mov si,message;
 
 reds:
-    mov ax,[si]
-    mov [es:di],ax
+    mov al,[si]
+    mov [es:di],al
     inc si
     add di,2
 
@@ -30,8 +27,7 @@ reds:
     cmp al,0;比较是不是0
     jnz reds
     
-message:
-     db "LeeOS",0
+message db "LeeOS",0
 
 
 times 510-($-$$) db 0
