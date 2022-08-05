@@ -37,7 +37,7 @@ int 0x10
 
 jmp $
 
-message db "hello,sms!"
+message db "hello"
 
 times 510-($-$$) db 0
 
