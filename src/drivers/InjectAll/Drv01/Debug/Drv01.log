@@ -1,0 +1,8 @@
+﻿  Building 'Drv01' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  DrvMain.cpp
+  Drv01.vcxproj -> F:\app\vs\os_kernel\src\drivers\InjectAll\Debug\Drv01.sys
+  Done Adding Additional Store
+  Successfully signed: F:\app\vs\os_kernel\src\drivers\InjectAll\Debug\Drv01.sys
+  
+  Inf2Cat task was skipped as there were no inf files to process
+  
